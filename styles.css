@@ -1,18 +1,29 @@
 ﻿body {
-    //background-color: #202020;
+    background-color: #789395;
+}
+
+.text{
+    font-family: 'Roboto', sans-serif;
 }
 
 .container{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    min-width: 1300px;
+    margin-top: 10%;
+    padding: 1%;
 }
 
-#input-field {
-/*    border: double;
-    border-color: red;*/
-    margin-top: 20%;
-    padding: 1%;
+.content{
+    display: flex;
+    justify-content: space-around;
+    min-width: 1300px;
+}
+
+.icon{
+    padding: 2px;
+    margin-right: 10px;
 }
 
 #location {
@@ -48,4 +59,66 @@
 #enter:active{
     font-size: 22px;
     margin-left: 10px;
+}
+
+#header{
+    display: flex;
+    justify-content: center;
+    min-width: 1300px;
+    font-family: 'Roboto', sans-serif;
+}
+
+#one, #two, #three, #four, #five{
+    display: none;
+    height: 100%;
+    margin-top: 25px;
+    background-color: #94B49F;
+    border: solid black;
+    border-radius: 10px;
+}
+
+#date-section{
+    display: flex;
+    justify-content: center;
+    border-bottom: 4px solid black;
+    box-shadow: 0px 4px 5px black;
+}
+
+#date-text{
+    font-family: 'Roboto', sans-serif;
+}
+
+#weather-section{
+    display: flex;
+    flex-direction: column;
+    padding: 3px;
+    border-bottom: 4px solid black;
+    box-shadow: 0px 4px 5px black;
+}
+
+#weather-info{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#weather-precip-day-0, #weather-precip-day-1, #weather-precip-day-2, #weather-precip-day-3, #weather-precip-day-4,
+#weather-precip-night-0, #weather-precip-night-1, #weather-precip-night-2, #weather-precip-night-3, #weather-precip-night-4{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 2px solid black;
+    height: 30px;
+}
+
+#temperature-section{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#temp{
+    font-family: 'Roboto', sans-serif;
+    font-size: 50px;
+    margin: 0px;
 }

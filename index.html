@@ -5,13 +5,158 @@
     <meta charset="utf-8" />
     <title>Forecast</title>
     <link rel="stylesheet" href="styles.css"/>
+    <style> @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap'); </style>
 </head>
 <body>
     <div class="container">
-        <section id="input-field">
-            <input type="text" id="location" name="location-input" size="30" placeholder="Enter city name...">
-            <button type="button" id="enter">Enter</button>
-        </section>
+        <input type="text" id="location" name="location-input" size="30" placeholder="Enter city name...">
+        <button type="button" id="enter">Enter</button>
+    </div>
+
+    <h1 class="text" id="header"></h1>
+    
+    <div class="content">
+        <div id="one">
+            <section id="date-section">
+                <h2 class="text" id="date-text-0">-</h2>
+            </section>
+            <section id="weather-section">
+                <section id="weather-info">
+                    <img class="icon" id="icon-day-0" src="icons/sunny.svg" alt="Weather" width="60px" height="60px">
+                    <h2 class="text" id="weather-type-day-0">-</h2>
+                </section>
+                <section id="weather-precip-day-0">
+                    <h2 class="text" id="precipitation-day-0">-</h2>
+                </section>
+            </section>
+            <section id="weather-section">
+                <section id="weather-info">
+                    <img class="icon" id="icon-night-0" src="icons/sunny.svg" alt="Weather" width="60px" height="60px">
+                    <h2 class="text" id="weather-type-night-0">-</h2>
+                </section>
+                <section id="weather-precip-night-0">
+                    <h2 class="text" id="precipitation-night-0">-</h2>
+                </section>
+            </section>
+            <section id="temperature-section">
+                <p class="text" id="temp"><b>High:</b><span id="high-text-0">-</span><span>&#176;C</span></p>
+                <p class="text" id="temp"><b>Low:</b><span id="low-text-0">-</span><span>&#176;C</span></p>
+            </section>
+        </div>
+
+        <div id="two">
+            <section id="date-section">
+                <h2 class="text" id="date-text-1">-</h2>
+            </section>
+            <section id="weather-section">
+                <section id="weather-info">
+                    <img class="icon" id="icon-day-1" src="icons/sunny.svg" alt="Weather" width="60px" height="60px">
+                    <h2 class="text" id="weather-type-day-1">-</h2>
+                </section>
+                <section id="weather-precip-day-1">
+                    <h2 class="text" id="precipitation-day-1">-</h2>
+                </section>
+            </section>
+            <section id="weather-section">
+                <section id="weather-info">
+                    <img class="icon" id="icon-night-1" src="icons/sunny.svg" alt="Weather" width="60px" height="60px">
+                    <h2 class="text" id="weather-type-night-1">-</h2>
+                </section>
+                <section id="weather-precip-night-1">
+                    <h2 class="text" id="precipitation-night-1">-</h2>
+                </section>
+            </section>
+            <section id="temperature-section">
+                <p class="text" id="temp"><b>High:</b><span id="high-text-1">-</span><span>&#176;C</span></p>
+                <p class="text" id="temp"><b>Low:</b><span id="low-text-1">-</span><span>&#176;C</span></p>
+            </section>
+        </div>
+
+        <div id="three">
+            <section id="date-section">
+                <h2 class="text" id="date-text-2">-</h2>
+            </section>
+            <section id="weather-section">
+                <section id="weather-info">
+                    <img class="icon" id="icon-day-2" src="icons/sunny.svg" alt="Weather" width="60px" height="60px">
+                    <h2 class="text" id="weather-type-day-2">-</h2>
+                </section>
+                <section id="weather-precip-day-2">
+                    <h2 class="text" id="precipitation-day-2">-</h2>
+                </section>
+            </section>
+            <section id="weather-section">
+                <section id="weather-info">
+                    <img class="icon" id="icon-night-2" src="icons/sunny.svg" alt="Weather" width="60px" height="60px">
+                    <h2 class="text" id="weather-type-night-2">-</h2>
+                </section>
+                <section id="weather-precip-night-2">
+                    <h2 class="text" id="precipitation-night-2">-</h2>
+                </section>
+            </section>
+            <section id="temperature-section">
+                <p class="text" id="temp"><b>High:</b><span id="high-text-2">-</span><span>&#176;C</span></p>
+                <p class="text" id="temp"><b>Low:</b><span id="low-text-2">-</span><span>&#176;C</span></p>
+            </section>
+        </div>
+
+        <div id="four">
+            <section id="date-section">
+                <h2 class="text" id="date-text-3">-</h2>
+            </section>
+            <section id="weather-section">
+                <section id="weather-info">
+                    <img class="icon" id="icon-day-3" src="icons/sunny.svg" alt="Weather" width="60px" height="60px">
+                    <h2 class="text" id="weather-type-day-3">-</h2>
+                </section>
+                <section id="weather-precip-day-3">
+                    <h2 class="text" id="precipitation-day-3">-</h2>
+                </section>
+            </section>
+            <section id="weather-section">
+                <section id="weather-info">
+                    <img class="icon" id="icon-night-3" src="icons/sunny.svg" alt="Weather" width="60px" height="60px">
+                    <h2 class="text" id="weather-type-night-3">-</h2>
+                </section>
+                <section id="weather-precip-night-3">
+                    <h2 class="text" id="precipitation-night-3">-</h2>
+                </section>
+            </section>
+            <section id="temperature-section">
+                <p class="text" id="temp"><b>High:</b><span id="high-text-3">-</span><span>&#176;C</span></p>
+                <p class="text" id="temp"><b>Low:</b><span id="low-text-3">-</span><span>&#176;C</span></p>
+            </section>
+        </div>
+
+        <div id="five">
+            <section id="date-section">
+                <h2 class="text" id="date-text-4">-</h2>
+            </section>
+            <section id="weather-section">
+                <section id="weather-info">
+                    <img class="icon" id="icon-day-4" src="icons/sunny.svg" alt="Weather" width="60px" height="60px">
+                    <h2 class="text" id="weather-type-day-4">-</h2>
+                </section>
+                <section id="weather-precip-day-4">
+                    <h2 class="text" id="precipitation-day-4">-</h2>
+                </section>
+            </section>
+            <section id="weather-section">
+                <section id="weather-info">
+                    <img class="icon" id="icon-night-4" src="icons/sunny.svg" alt="Weather" width="60px" height="60px">
+                    <h2 class="text" id="weather-type-night-4">-</h2>
+                </section>
+                <section id="weather-precip-night-4">
+                    <h2 class="text" id="precipitation-night-4">-</h2>
+                </section>
+            </section>
+            <section id="temperature-section">
+                <p class="text" id="temp"><b>High:</b><span id="high-text-4">-</span><span>&#176;C</span></p>
+                <p class="text" id="temp"><b>Low:</b><span id="low-text-4">-</span><span>&#176;C</span></p>
+            </section>
+        </div>
     </div>
 </body>
+<script defer src='config.js'></script>
+<script defer src='script.js'></script>
 </html>
