@@ -6,9 +6,10 @@ const WEATHER_URL = "http://dataservice.accuweather.com/forecasts/v1/daily/5day/
 async function getLocation() {
     if (document.getElementById("location").value == "") return; //Guard statement checks to make sure location is given
 
+    //Storing user inputted city into city variable
     let city = document.getElementById("location").value;
-    console.log(city);
 
+    //Merging URL with user inputted city into one string
     const LOCATION_URL = LOCATION_API_URL + city;
 
     //Making an API call (request)
@@ -17,16 +18,16 @@ async function getLocation() {
 
     //Parsing it to JSON format
     const LOCATION_DATA = await LOCATION_RESPONSE.json();
-    //console.log(LOCATION_DATA[0]);
 
     //Retrieving data from JSON
     const LOCATION_INFO = LOCATION_DATA[0];
     let locationKey = LOCATION_INFO.Key;
 
-    //console.log(locationKey);
+    //Sending locationKey to getTemperature to use in weather API call
     getTemperature(locationKey);
 }
 
+//Function gets all weather info through Accuweather API
 async function getTemperature(locationKey) {
     //Creating URL with location key to get weather info
     const WEATHER_API_URL = WEATHER_URL + locationKey + "?apikey=" + API_KEY;
@@ -45,30 +46,39 @@ async function getTemperature(locationKey) {
     let header = WEATHER_INFO.Headline.Text;
     document.getElementById("header").innerHTML = header + ".";
 
+    //Creating day array to store multiple weather classes with all weather info
     let day = [];
 
+    //Loop that gets and sets all weather info into the day array and changes HTML to match weather info
     for (let i = 0; i <= 4; i++){
-        day[i] = new weather(WEATHER_INFO.DailyForecasts[i].Date, 
-            WEATHER_INFO.DailyForecasts[i].Temperature.Maximum.Value, 
-            WEATHER_INFO.DailyForecasts[i].Temperature.Minimum.Value, 
+        day[i] = new weather(WEATHER_INFO.DailyForecasts[i].Date,
+            WEATHER_INFO.DailyForecasts[i].Temperature.Maximum.Value,
+            WEATHER_INFO.DailyForecasts[i].Temperature.Minimum.Value,
+            WEATHER_INFO.DailyForecasts[i].Day.Icon,
             WEATHER_INFO.DailyForecasts[i].Day.IconPhrase,
             WEATHER_INFO.DailyForecasts[i].Day.PrecipitationType,
             WEATHER_INFO.DailyForecasts[i].Day.PrecipitationIntensity,
             WEATHER_INFO.DailyForecasts[i].Day.HasPrecipitation,
+            WEATHER_INFO.DailyForecasts[i].Night.Icon,
             WEATHER_INFO.DailyForecasts[i].Night.IconPhrase,
             WEATHER_INFO.DailyForecasts[i].Night.PrecipitationType,
             WEATHER_INFO.DailyForecasts[i].Night.PrecipitationIntensity,
             WEATHER_INFO.DailyForecasts[i].Night.HasPrecipitation);
 
+            //Merging precipitation info into one string
             let dPrecip = day[i].dIntensity() + " " + day[i].dType();
             let nPrecip = day[i].nIntensity() + " " + day[i].nType();
 
+            //Taking day[i] info and setting HTML
             document.getElementById("date-text-"+i).innerHTML = getDate(day[i].date());
+            document.getElementById("icon-day-"+i).src = "icons/" + day[i].dIconNum() + ".svg";
             document.getElementById("weather-type-day-"+i).innerHTML = day[i].dIcon();
+            document.getElementById("icon-night-"+i).src = "icons/" + day[i].nIconNum() + ".svg";
             document.getElementById("weather-type-night-"+i).innerHTML = day[i].nIcon();
             document.getElementById("high-text-"+i).innerHTML = " " + toCelcius(day[i].high());
             document.getElementById("low-text-"+i).innerHTML = " " + toCelcius(day[i].low());
 
+            //If statement checks if there is precipitation that day and adds title if true but hides the section if false
             if (day[i].dHasPrecip() === true) {
                 document.getElementById('precipitation-day-'+i).innerHTML = dPrecip;
             } else {
@@ -98,14 +108,16 @@ function toCelcius(temp){ return finalTemp = Math.round((temp - 32) * 5/9); }
 
 //Getter and setter for each weather panel
 class weather {
-    constructor(date, high, low, dIcon, dType, dIntensity, dHasPrecip, nIcon, nType, nIntensity, nHasPrecip) {
+    constructor(date, high, low, dIconNum, dIcon, dType, dIntensity, dHasPrecip, nIconNum, nIcon, nType, nIntensity, nHasPrecip) {
         this.date = date;
         this.high = high;
         this.low = low;
+        this.dIconNum = dIconNum;
         this.dIcon = dIcon;
         this.dType = dType;
         this.dIntensity = dIntensity;
         this.dHasPrecip = dHasPrecip;
+        this.dIconNum = dIconNum;
         this.nIcon = nIcon;
         this.nType = nType;
         this.nIntensity = nIntensity;
@@ -127,6 +139,12 @@ class weather {
             if (str !== undefined)
                 low = str;
             return low;
+        };
+
+        this.dIconNum = function (str) {
+            if (str !== undefined)
+                dIconNum = str;
+            return dIconNum;
         };
 
         this.dIcon = function (str) {
@@ -151,6 +169,12 @@ class weather {
             if (str !== undefined)
                 dHasPrecip = str;
             return dHasPrecip;
+        };
+
+        this.nIconNum = function (str) {
+            if (str !== undefined)
+                nIconNum = str;
+            return nIconNum;
         };
 
         this.nIcon = function (str) {
@@ -199,5 +223,3 @@ document.getElementById("location")
         document.getElementById("enter").click();
     }
 });
-
-//showTiles();
